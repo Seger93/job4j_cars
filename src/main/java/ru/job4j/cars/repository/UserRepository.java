@@ -13,7 +13,6 @@ import java.util.Optional;
 public class UserRepository {
     private final SessionFactory sf;
 
-
     /**
      * Сохранить в базе.
      *
