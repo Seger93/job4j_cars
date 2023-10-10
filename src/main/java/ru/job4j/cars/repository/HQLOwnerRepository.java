@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public class HQLOwnerRepository implements OwnerRepository {
 
-    CrudRepository crudRepository;
+    private final CrudRepository crudRepository;
 
     @Override
     public Optional<Owner> save(Owner owner) {

@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public class HQLCarRepository implements CarRepository {
 
-    CrudRepository crudRepository;
+    private final CrudRepository crudRepository;
 
     @Override
     public Optional<Car> save(Car car) {

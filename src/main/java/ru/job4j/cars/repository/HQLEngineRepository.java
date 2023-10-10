@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public class HQLEngineRepository implements EngineRepository {
 
-    CrudRepository crudRepository;
+    private final CrudRepository crudRepository;
 
     @Override
     public Optional<Engine> save(Engine engine) {
