@@ -83,4 +83,19 @@ public class CrudRepository {
             session.close();
         }
     }
+
+    public boolean runBoolean(Function<Session, Boolean> command) {
+        return tx(command);
+    }
+
+    public boolean runBoolean(String query, Map<String, Object> args) {
+        Function<Session, Boolean> command = session -> {
+            var sq = session.createQuery(query);
+            for (Map.Entry<String, Object> arg : args.entrySet()) {
+                sq.setParameter(arg.getKey(), arg.getValue());
+            }
+            return sq.executeUpdate() > 0;
+        };
+        return tx(command);
+    }
 }
