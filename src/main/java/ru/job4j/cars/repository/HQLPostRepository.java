@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Repository
 @AllArgsConstructor
-public class PostRepository {
+public class HQLPostRepository {
     private final CrudRepository crudRepository;
 
     public Collection<Post> findByAllPostWithPhoto() {
