@@ -15,18 +15,17 @@ public class HQLPostRepository {
     private final CrudRepository crudRepository;
 
     public Collection<Post> findByAllPostWithPhoto() {
-        return crudRepository.query("Select from auto_post p where p.file_id is null order by p.id", Post.class);
+        return crudRepository.query("SELECT FROM Post p WHERE p.file_id is null order by p.id", Post.class);
     }
 
-    public Collection<Post> findAllPostWitchBrand(int carId) {
-        return crudRepository.query("from auto_post WHERE car_id = :fcar_id", Post.class,
-                Map.of("fcar_id", carId));
+    public Collection<Post> findAllPostWitchBrand(String brand) {
+        return crudRepository.query("FROM Post p WHERE p.car.brand = :fBrand", Post.class,
+                Map.of("fBrand", brand));
     }
 
     public Collection<Post> findAllPostToday() {
-        LocalDateTime today = LocalDateTime.now().truncatedTo(ChronoUnit.DAYS);
-        LocalDateTime tomorrow = today.plusDays(1).truncatedTo(ChronoUnit.DAYS);
-        return crudRepository.query("from auto_post WHERE created >= :today AND created < :tomorrow", Post.class,
-                Map.of("today", today, "tomorrow", tomorrow));
+        LocalDateTime today = LocalDateTime.now().minusDays(1).truncatedTo(ChronoUnit.DAYS);
+        return crudRepository.query("FROM Post WHERE created > :today", Post.class,
+                Map.of("today", today));
     }
 }

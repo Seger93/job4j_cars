@@ -1,0 +1,1 @@
+alter table auto_post ADD COLUMN brand_id int REFERENCES brand(id);

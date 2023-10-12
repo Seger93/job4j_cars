@@ -6,7 +6,9 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -43,5 +45,11 @@ public class Post {
     )
     private List<User> participates = new ArrayList<>();
 
-    private int fileId;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "auto_post_id")
+    private Set<File> fileId = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
 }

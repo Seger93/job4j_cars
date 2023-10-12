@@ -1,1 +1,0 @@
-alter table auto_post ADD COLUMN file_id int REFERENCES file(id);
