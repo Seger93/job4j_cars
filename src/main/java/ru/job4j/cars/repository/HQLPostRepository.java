@@ -15,12 +15,12 @@ public class HQLPostRepository {
     private final CrudRepository crudRepository;
 
     public Collection<Post> findByAllPostWithPhoto() {
-        return crudRepository.query("SELECT FROM Post p WHERE p.file_id is null order by p.id", Post.class);
+        return crudRepository.query("SELECT FROM Post p WHERE SIZE(p.file_id) > 0 order by p.id", Post.class);
     }
 
-    public Collection<Post> findAllPostWitchBrand(String brand) {
-        return crudRepository.query("FROM Post p WHERE p.car.brand = :fBrand", Post.class,
-                Map.of("fBrand", brand));
+    public Collection<Post> findAllPostWitchBrand(String brandName) {
+        return crudRepository.query("FROM Post p WHERE p.car.brand.name = :fBrand", Post.class,
+                Map.of("fBrand", brandName));
     }
 
     public Collection<Post> findAllPostToday() {
