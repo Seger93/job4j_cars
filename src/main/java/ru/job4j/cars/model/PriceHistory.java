@@ -25,6 +25,5 @@ public class PriceHistory {
 
     private long after;
 
-    private LocalDateTime crated = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
-
+    private LocalDateTime created = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
 }

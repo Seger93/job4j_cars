@@ -1,6 +1,7 @@
 package ru.job4j.cars.model;
 
 import lombok.*;
+import net.bytebuddy.build.Plugin;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -14,6 +15,7 @@ import java.util.Set;
 @Data
 @Table(name = "car")
 @Entity
+@ToString
 public class Car {
 
     @Id

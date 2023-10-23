@@ -28,13 +28,14 @@ public class HQLCarRepository implements CarRepository {
 
     @Override
     public Optional<Car> findById(int id) {
-        return crudRepository.optional("from Car WHERE id = :fId", Car.class,
+        return crudRepository.optional("FROM Car c JOIN FETCH c.owners WHERE c.id = :fId",
+                Car.class,
                 Map.of("fId", id));
     }
 
     @Override
     public Collection<Car> findAll() {
-        return crudRepository.query("FROM Car c ORDER BY c.id",
+        return crudRepository.query("FROM Car c JOIN FETCH c.owners",
                 Car.class);
     }
 

@@ -33,7 +33,7 @@ public class Post {
     @JoinColumn(name = "auto_user_id")
     private User autoUserId;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     @JoinColumn(name = "auto_post_id")
     private List<PriceHistory> priceHistories = new ArrayList<>();
 
@@ -45,7 +45,7 @@ public class Post {
     )
     private List<User> participates = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     @JoinColumn(name = "auto_post_id")
     private Set<File> fileId = new HashSet<>();
 
